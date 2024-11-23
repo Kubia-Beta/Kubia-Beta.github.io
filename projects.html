@@ -63,9 +63,26 @@
 							I then engineered a user-friendly GUI utilizing AutoHotKey that integrated with Windows API and DirectX systems.
 							The release of this quality-of-life modification reached 989 downloads from the No Man's Sky community.
 						</p>
+									<pre><code class="language-javascript">
+std::string ReplaceWords(const std::string& input) { //scans the input line and replaces the word with 
+	std::regex altRegex("\\balt\\b\\s?", std::regex_constants::icase); //checks for the word "alt" as well as a whitespace after, ignoring case
+	std::regex altGrRegex("\\baltgr\\b\\s?", std::regex_constants::icase); //checks for "altgr" for EU keyboards
+	std::regex ctrlRegex("\\bctrl\\b\\s?", std::regex_constants::icase); //captures "ctrl"
+	std::regex controlRegex("\\bcontrol\\b\\s?", std::regex_constants::icase); //captures "control" instead of "ctrl"
+	std::regex shiftRegex("\\bshift\\b\\s?", std::regex_constants::icase); //captures "shift"
+	#pragma warning(disable: 4129) //The compiler is not always right, so it thinks "<\^>!" is an escape sequence when it is a literal string of characters being written to a file (warning C4129)
+	std::string output = std::regex_replace(input, altGrRegex, "<\^>!"); //begin constructing the output string, replacing any instance of altGr. If none are found, output = input
+	#pragma warning(default: 4129) //Restores the warning on everything else so if it ACTUALLY is a problem, it will alert you, unlike the string above which does not have any issues
+	output = std::regex_replace(output, altRegex, "!"); //continue for alt
+	output = std::regex_replace(output, ctrlRegex, "^"); //continue for ctrl
+	output = std::regex_replace(output, controlRegex, "^"); //as well as control
+	output = std::regex_replace(output, shiftRegex, "+"); //then finally shift
+	return output; //send the new string back
+}
+						</code></pre>
 					</div>
+					
 				</section>
-			
 			
 
 				<!-- Router Security Analysis -->
