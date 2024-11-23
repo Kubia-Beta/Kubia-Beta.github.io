@@ -52,6 +52,35 @@
 
 			<!-- Main -->
 			<div id="main">
+				<!-- Skyrim -->
+				<section id="skyrim" class="main special">
+					<header class="major">
+						<a href="https://creations.bethesda.net/en/skyrim/details/cf3bd19c-62cf-4c21-a4cb-669694cd3d34/RecyclR__XB1_"><h2>Skyrim Game Engine Optimization</h2></a>
+					</header>
+					<div class="content">
+						<p>
+							I Developed performance improvements to The Elder Scrolls V: Skyrim's game engine with modifications in C++, 
+							optimizing cell reset timers to improve memory management and reaching over 500k launches from more than 68k unique users. 
+							All of this stems from a root cause analysis of the game’s asset loading and memory allocation systems, 
+							legacy inefficiencies that I was able to identify through systematic testing and brute-force experimentation, 
+							allowing me to identify the optimal system parameters. 
+							This code contributed key optimization elements to the broader Skyrim community patch initiative and 
+							addressed memory bloat and physics object persistence issues while improving overall game stability and enjoyability across multiple Bethesda titles.
+						</p>
+						<p>When dealing with legacy code, even the smallest of changes can have a massive impact, and so adjustments need to be made with care and caution.
+						</p>
+									<pre><code class="lang-clike">
+iDeathDropWeaponChance = 0; // Was 100, represented as a percent chance. Causes memory bloat when set above 0.
+fAIMinGreetingDistance = 75; // Was 150, this felt unnatural for most players and would make them hostile to friendly npc's.
+iHoursToRespawnCell = 72; // Was 720, most cells would not respawn and cause memory bloat. 36 real-time hours to reset a cell also makes the world feel empty.
+iHoursToRespawnCellCleared = 48; // Was 480, cleared cells are cells that have the ability to be marked as "cleared" in their settings and on the map
+iDaysToRespawnVendor = 1; // Was 2, paired with other cell reset issues, this made the world feel dry and unchanging
+						</code></pre>
+					</div>
+					
+				</section>
+			
+			
 				<!-- Hold to Craft -->
 				<section id="htc" class="main special">
 					<header class="major">
