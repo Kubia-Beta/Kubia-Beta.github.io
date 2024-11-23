@@ -47,7 +47,7 @@
 					<li><a href="#tms">Task Management System</a></li>
 					<li><a href="#router-analysis">Router Security Analysis</a></li>
 					<li><a href="#rest-api">Spring Boot REST Services</a></li>
-					<li><a href="#cpp-multithreading">C++ Multithreading App</a></li>
+					<li><a href="#cpp-multithreading">C++ Multithreaded Peakfinding</a></li>
 				</ul>
 			</nav>
 
@@ -256,46 +256,105 @@ MIIDgDCCAumgAwIBAgIB... [Redacted]
 				<!-- Spring Boot REST Services -->
 				<section id="rest-api" class="main special">
 					<header class="major">
-						<h2>Spring Boot REST Services</h2>
+						<a href="https://github.com/Kubia-Beta/Software-Security-CS305/tree/main"><h2>Spring Boot REST Services</h2></a>
 					</header>
 					<div class="content">
 						<p>
-							This project involved building a robust CRUD API using Spring Boot and MySQL. 
-							The API supports seamless data management operations, making it suitable for a variety of applications. 
-							I designed the project to optimize database interactions and ensure easy scalability.
+							I developed a secure server application for the mock client Artemis Financial, a consulting firm specializing in financial planning. 
+							The project aimed to modernize the client’s operations and enhance data security. 
+							Using Spring Boot, I implemented Transport Layer Security (TLS) 1.3 with a robust cipher suite (TLS_AES_256_GCM_SHA384), 
+							ensuring secure communication between client and server. 
+							The configuration included a self-signed certificate and strict protocol enforcement for enhanced data protection.
+						</p> </p>
+							The application featured a RESTful endpoint that generated SHA-384 hashes for input data, demonstrating secure coding practices. 
+							I focused on robust error handling, detailed logging with SLF4J, and adherence to cryptographic best practices. 
+							This project showcased my ability to integrate secure programming techniques and modern frameworks to meet project requirements effectively.
 						</p>
-						<p>
-							<strong>Highlights:</strong>
-						</p>
-						<ul>
-							<li>Developed a REST API capable of handling CRUD operations.</li>
-							<li>Integrated MySQL for backend data storage.</li>
-							<li>Designed using industry best practices for maintainable and secure code.</li>
-						</ul>
-						<span class="image"><img src="assets/images/rest-api.jpg" alt="Spring Boot REST API" /></span>
+						<h3>Server-side SHA-384 hashing snippet</h3>
+									<pre><code class="lang-clike">
+/**
+ * Generates a SHA-384 hash from an input string.
+ *
+ * Time: O(n), θ(1), Ω(1)
+ * Space: O(n+k)
+ * @param String data
+ * @return String dataHashed
+ * @throws NoSuchAlgorithmException, UnsupportedEncodingException 
+ * References: https://stackoverflow.com/questions/5531455/how-to-hash-some-string-with-sha-256-in-java
+ */
+private String generateHash(String data) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	final MessageDigest md = MessageDigest.getInstance("SHA-384"); // Create message digest obj
+	final byte[] digest = md.digest(data.getBytes("UTF-8")); // Compute the message digest (byte array)
+	StringBuilder hexString = new StringBuilder(); // Buffer to move our data into, use StringBuffer for thread safety if needed
+	for (int i = 0; i < digest.length; i++) {
+		final String hex = Integer.toHexString(0xff & digest[i]);
+		if (hex.length() == 1) {
+			hexString.append('0'); // Leading zeroes
+		}
+		hexString.append(hex);
+	}
+	return hexString.toString();
+}
+						</code></pre>
 					</div>
 				</section>
 
 				<!-- C++ Multithreading Application -->
 				<section id="cpp-multithreading" class="main special">
 					<header class="major">
-						<h2>C++ Multithreading Application</h2>
+						<a href="https://github.com/Kubia-Beta/Sandboxing/blob/main/PeakFinding.cpp"><h2>C++ Multithreaded Peak-Finding</h2></a>
 					</header>
 					<div class="content">
 						<p>
-							Developed a high-performance application to analyze screen data on a 4K monitor. 
-							This project utilized multithreading and a divide-and-conquer strategy for processing large datasets in real-time. 
-							The result was an efficient solution with minimal performance overhead.
+This personal project, completed as a one-day exercise, focused on leveraging multithreading in C++ to efficiently detect peaks in large datasets. The program generates vectors of varying sizes, including datasets as large as 228228 elements, and compares the performance of straightforward single-threaded algorithms against a multithreaded implementation. By dividing the data into segments and utilizing threads to process each segment concurrently, the multithreaded approach significantly improves execution time.
 						</p>
-						<p>
-							<strong>Highlights:</strong>
-						</p>
+							<h3>Key highlights include:</h3>
 						<ul>
-							<li>Designed a multithreaded system to handle large-scale data processing.</li>
-							<li>Optimized performance to refresh data every 0.6 seconds.</li>
-							<li>Implemented using modern C++ standards and OpenCV.</li>
+							<li>Efficient Vector Generation: Optimized dataset creation with direct array assignment.</li>
+							<li>Multithreading Framework: Used std::thread and std::promise for parallel processing.</li>
+							<li>Algorithm Efficiency: Compared single-threaded and multithreaded approaches.</li>
 						</ul>
-						<span class="image"><img src="assets/images/cpp-app.jpg" alt="C++ Multithreading App" /></span>
+						<p>
+						This project not only reinforced proficiency in C++ multithreading but also highlighted the practical advantages of parallel processing for computationally intensive tasks. It served as a valuable opportunity to stay motivated and refine programming skills during a professional transition.
+						</p>
+						<h3>Multithreaded snippet</h3>
+									<pre><code class="lang-cpp">
+double OneDimVector::PeakFindCountMultithreaded(vector<int>& vectorToTraverse, int numThreads) {
+	auto startTime = chrono::high_resolution_clock::now();
+
+	int vectorSize = vectorToTraverse.size();
+	int segmentSize = vectorSize / numThreads;
+
+	// Store futures for peak counts from each thread
+	vector<future<int>> futures;
+
+	// Launch threads to search each segment
+	for (int i = 0; i < numThreads; ++i) {
+		int start = i * segmentSize;
+		int end = (i == numThreads - 1) ? vectorSize : start + segmentSize + 1; // Check overlap
+
+		promise<int> peakCountPromise;
+		futures.push_back(peakCountPromise.get_future());
+
+		// Launch a thread to count peaks in the segment [start, end)
+		thread t(&OneDimVector::CountPeaksInSegment, this, ref(vectorToTraverse), start, end, move(peakCountPromise));
+		t.detach(); // Detach threads to allow parallel execution
+	}
+
+	// Accumulate the total number of peaks from all futures
+	int totalPeaks = 0;
+	for (auto& f : futures) {
+		totalPeaks += f.get(); // Add up the peak counts from all segments
+	}
+
+	auto endTime = chrono::high_resolution_clock::now();
+	chrono::duration<double> elapsed = endTime - startTime;
+
+	cout << "Total peaks found: " << totalPeaks << endl;
+
+	return elapsed.count(); // Return elapsed time in seconds
+}
+						</code></pre>
 					</div>
 				</section>
 
