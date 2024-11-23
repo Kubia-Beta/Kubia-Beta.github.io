@@ -1,13 +1,29 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Connor Sculthorpe - Projects</title>
+		<title>Projects - Connor Sculthorpe</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link href="assets/css/prism.css" rel="stylesheet" />
 		<script src="assets/js/prism.js"></script>
-		
+		<style>
+.main.special .content ul {
+	list-style-position: inside; /* Bullets align with the text */
+	padding-left: 0; /* Remove default padding */
+	margin: 0 auto; /* Center the entire list block */
+	display: table; /* Ensures proper centering alignment */
+	text-align: center; /* Centers the text */
+}
+
+.main.special .content ul li {
+	display: list-item; /* Maintain bullet structure */
+	text-align: center; /* Center the text for each item */
+	margin: 0.5em 0; /* Add spacing between list items */
+}
+
+</style>
+
 		
 	</head>
 	<body class="is-preload">
@@ -24,7 +40,10 @@
 			<!-- Navigation -->
 			<nav id="nav">
 				<ul>
-					<li><a href="#router-analysis" class="active">Router Security Analysis</a></li>
+					<li><a href="#htc" class="active">Hold to Craft</a></li>
+					<li><a href="#skyrim">Skyrim Game Engine Optimization</a></li>
+					<li><a href="#tms">Task Management System</a></li>
+					<li><a href="#router-analysis">Router Security Analysis</a></li>
 					<li><a href="#rest-api">Spring Boot REST Services</a></li>
 					<li><a href="#cpp-multithreading">C++ Multithreading App</a></li>
 				</ul>
@@ -40,17 +59,18 @@
 	</header>
 	<div class="content">
 		<p>
-			I analyzed vulnerabilities in router firmware manufactured by Huizhou TCL Communication Electronics Co. 
+			I analyzed vulnerabilities in router firmware manufactured by Micronet-Union Technologies, Inc.
 			The identified weaknesses were mapped to the Common Weakness Enumeration (CWE) database, and I provided low-cost solutions to the manufacturer. 
-			This project required expertise in HTML, JavaScript, C, and ASP, along with networking and security standards.
+			This project required expertise in HTML, JavaScript, C, C++, and ASP, along with networking and security standards.
 		</p>
-		<p><strong>Highlights:</strong></p>
-		<ul>
-			<li>Discovered firmware exploits affecting network security.</li>
-			<li>Collaborated with Micronet-Union Technologies to enhance router firmware security.</li>
-			<li>Provided detailed test scripts and remediation paths.</li>
-		</ul>
-		<!-- <span class="image"><img src="assets/images/router-analysis.jpg" alt="Router Security Analysis" /></span> --!>
+		<!--
+		<h4><strong>Highlights:</strong></h>
+			<ul>
+				<li>Discovered firmware exploits affecting network security.</li>
+				<li>Collaborated with Micronet-Union Technologies to enhance router firmware security.</li>
+				<li>Provided detailed test scripts and remediation paths.</li>
+			</ul>
+		<span class="image"><img src="assets/images/router-analysis.jpg" alt="Router Security Analysis" /></span> --!>
 
 		<!-- Code Snippets -->
 		<h3>Security Flaw Snippet</h3>
@@ -126,12 +146,37 @@ MIIDgDCCAumgAwIBAgIB... [Redacted]
 
 			</div>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<p>&copy; 2024 Connor Sculthorpe. Design inspired by <a href="https://html5up.net">HTML5 UP</a>.</p>
-			</footer>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Resume</h2>
+							<p>Need to have a resume on hand? Click the button below to download a .Docx version of my resume, showcasing my experience, skills, and achievements.</p>
+							<ul class="actions">
+								<li><a href="assets/files/Connor_Sculthorpe_Resume_Developer.docx" class="button primary" download>Download Resume</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Contact Information</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>3665 Needles Hwy Apt 3G &bull; Laughlin, NV 89029</dd>
+								<dt>Phone</dt>
+								<dd>+1 (915) 309-8471</dd>
+								<dt>Email</dt>
+								<dd><a href="mailto:csculthorpe+portfolio@gmail.com">csculthorpe+portfolio@gmail.com</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="https://www.linkedin.com/in/connor-sculthorpe-674b98317/" class="icon brands fa-linkedin alt"><span class="label">Linkedin</span></a></li>
+								<li><a href="https://snhu.joinhandshake.com/profiles/27042948" class="icon fa-regular fa-handshake alt"><span class="label">Handshake</span></a></li>
+								<li><a href="https://github.com/Kubia-Beta" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy;2024 Connor Sculthorpe. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
 
 		</div>
+
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
