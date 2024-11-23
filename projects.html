@@ -42,7 +42,9 @@
 				<ul>
 					<li><a href="index.html"><b>Home</b></a></li>
 					<li><a href="#skyrim">Skyrim Game Engine Optimization</a></li>
-					<li><a href="#htc" class="active">Hold to Craft</a></li>
+					<li><a href="#datastructure">Custom Data Structure Analysis</a></li>
+					
+					<li><a href="#htc">Hold to Craft</a></li>
 					<li><a href="#tms">Task Management System</a></li>
 					<li><a href="#router-analysis">Router Security Analysis</a></li>
 					<li><a href="#rest-api">Spring Boot REST Services</a></li>
@@ -73,13 +75,61 @@
 iDeathDropWeaponChance = 0; // Was 100, represented as a percent chance. Causes memory bloat when set above 0.
 fAIMinGreetingDistance = 75; // Was 150, this felt unnatural for most players and would make them hostile to friendly npc's.
 iHoursToRespawnCell = 72; // Was 720, most cells would not respawn and cause memory bloat. 36 real-time hours to reset a cell also makes the world feel empty.
-iHoursToRespawnCellCleared = 48; // Was 480, cleared cells are cells that have the ability to be marked as "cleared" in their settings and on the map
-iDaysToRespawnVendor = 1; // Was 2, paired with other cell reset issues, this made the world feel dry and unchanging
+iHoursToRespawnCellCleared = 48; // Was 480, cleared cells are cells that have the ability to be marked as "cleared" in their settings and on the map.
+iDaysToRespawnVendor = 1; // Was 2, paired with other cell reset issues, this made the world feel dry and unchanging.
 						</code></pre>
 					</div>
-					
 				</section>
 			
+				<!-- Data Structures -->
+				<section id="datastructure" class="main special">
+					<header class="major">
+						<a href="https://github.com/Kubia-Beta/CS-300/blob/main/CS300%20Project%20Two/CS300%20Project%20Two.cpp"><h2>Custom Data Structure Analysis</h2></a>
+					</header>
+					<div class="content">
+						<p>
+							In this project, I explored the practical application of theoretical data structures by implementing and comparing a custom Vector, 
+							Hash Table, and Binary Search Tree. Designed to analyze algorithmic efficiency, the program evaluated time and space complexity through 
+							Big O, Big Theta, and Big Omega notations. I utilized C++ to construct and integrate these structures into a single-file application, 
+							adhering to specific constraints while ensuring code modularity and maintainability. 
+							Additionally, I developed robust error handling for input verification, including a CSV parser that identifies incompatible data with 
+							precise error feedback. This experience deepened my understanding of how mathematical abstractions translate into programming realities, 
+							particularly the trade-offs and practicalities involved in designing and implementing data structures. 
+							The project culminated in a solution that benchmarks relative performance, offering insights into the operational efficiencies of 
+							various data structures in real-world scenarios.
+						</p>
+									<pre><code class="lang-cpp">
+/**
+ * Adds a node with course to the tree
+ *
+ * Time: O(log n)
+ * Space: O(n)
+ * @param Node* node to be referenced from
+ * @param Course aCourse to be added
+ */
+void BST::InsertItem(Node* node, Course aCourse) {
+	if (node->course.courseTitle > aCourse.courseTitle) { // If the existing course number is greater than the one to be inserted
+		if (node->left == nullptr) { // Left subtree has no lesser node
+			node->left = new Node(aCourse); // Construct a new node and make it the left pointer of the current node
+			this->TreeSize = this->TreeSize + 1; // Tree size has increased by one node
+		}
+		else { // Left not nullptr, exists
+			InsertItem(node->left, aCourse); // Recurse leftward
+		}
+	}
+	else { // Existing course number is less than the one to be inserted
+		if (node->right == nullptr) { // Right subtree has no lesser node
+			node->right = new Node(aCourse); // Construct a new node and make it the right pointer of the current node
+			this->TreeSize = this->TreeSize + 1; // Tree size has increased by one node
+		}
+		else { // Right nmot nullptr, exists
+			InsertItem(node->right, aCourse); // Recurse rightward
+		}
+	}
+}
+						</code></pre>
+					</div>
+				</section>
 			
 				<!-- Hold to Craft -->
 				<section id="htc" class="main special">
