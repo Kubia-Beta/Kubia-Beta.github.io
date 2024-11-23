@@ -70,6 +70,7 @@
 						</p>
 						<p>When dealing with legacy code, even the smallest of changes can have a massive impact, and so adjustments need to be made with care and caution.
 						</p>
+						<h3>C++ Game Variables snippet</h3>
 									<pre><code class="lang-clike">
 iDeathDropWeaponChance = 0; // Was 100, represented as a percent chance. Causes memory bloat when set above 0.
 fAIMinGreetingDistance = 75; // Was 150, this felt unnatural for most players and would make them hostile to friendly npc's.
@@ -97,6 +98,7 @@ iDaysToRespawnVendor = 1; // Was 2, paired with other cell reset issues, this ma
 							The project culminated in a solution that benchmarks relative performance, offering insights into the operational efficiencies of 
 							various data structures in real-world scenarios.
 						</p>
+						<h3>Binary Search Tree snippet</h3>
 									<pre><code class="lang-cpp">
 /**
  * Adds a node with course to the tree
@@ -141,6 +143,7 @@ void BST::InsertItem(Node* node, Course aCourse) {
 							I then engineered a user-friendly GUI utilizing AutoHotKey that integrated with Windows API and DirectX systems.
 							The release of this quality-of-life modification reached 989 downloads from the No Man's Sky community.
 						</p>
+						<h3>Regular Expression (regex) function snippet</h3>
 									<pre><code class="lang-clike">
 std::string ReplaceWords(const std::string& input) { //scans the input line and replaces the word with 
 	std::regex altRegex("\\balt\\b\\s?", std::regex_constants::icase); //checks for the word "alt" as well as a whitespace after, ignoring case
@@ -172,10 +175,34 @@ std::string ReplaceWords(const std::string& input) { //scans the input line and 
 							scheduling, and task tracking while implementing a maintainable codebase structure. 
 							To accomplish this, I developed JUnit test suites for all application modules and achieved 100% code coverage against an 80% requirement through systematic validation of functionality and edge cases. To finalize robustness, I created error handling and validation mechanisms across all system components.
 						</p>
-						<p>When dealing with legacy code, even the smallest of changes can have a massive impact, and so adjustments need to be made with care and caution.
-						</p>
-									<pre><code class="lang-clike">
-FIXME
+						<h3>JUnit Test snippet</h3>
+									<pre><code class="lang-java">
+class ContactServiceTest {
+	// Vars used to compare and create contacts to reduce magic values
+	private String testID = "ID New";
+	private String testFirst = "FirstName";
+	private String testLast = "LastName";
+	private String testPhone = "1234567890";
+	private String testAddress = "123456 Username Ln, Alabama";
+	ContactService aContactService = new ContactService(); // Empty parent
+	
+	@BeforeEach
+	 void setupBase() { // Create a baseline contact to work with
+		aContactService.addContact(testID, testFirst, testLast, testPhone, testAddress);
+	}
+	
+	@Test
+	void testCreateDuplicate() { // Checks that duplicate rejection is funcitoning
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			aContactService.addContact(testID, testFirst, testLast, testPhone, testAddress);
+		});}
+	
+	@Test
+	void testCreateTooLongAllFields() { // Checks that fields that are too long are not accepted by addContact
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			aContactService.addContact(testID + "OVERLOAD", testFirst + "OVERLOAD",
+					testLast + "OVERLOAD", testPhone + "OVERLOAD", testAddress + "OVERLOAD");
+		});}
 						</code></pre>
 					</div>
 				</section>
