@@ -3783,3 +3783,22 @@ input, select, textarea {
 			}
 
 		}
+		
+@media screen and (max-width: 600px) {
+	#nav ul li {
+		margin: 5px 0; /* Stack nav items */
+	}
+
+	#nav ul li a {
+		display: block; /* Ensure buttons are full-width */
+		text-align: center;
+	}
+
+	.main.special ul.features li {
+		margin-bottom: 20px; /* Add spacing between project cards */
+	}
+
+	.main.special ul.statistics li {
+		font-size: 14px; /* Reduce text size for smaller screens */
+	}
+}
