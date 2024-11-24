@@ -21,6 +21,32 @@
 	text-align: center; /* Center the text for each item */
 	margin: 0.5em 0; /* Add spacing between list items */
 }
+.project-link {
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	color: white; /* Default text color */
+	transition: color 0.5s ease-in; /* Text color transitions with ease-in */
+}
+
+.project-link:hover {
+	color: transparent; /* Makes the text blend with the gradient */
+	background: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0); /* Gradient color for text */
+	background-clip: text;
+	-webkit-background-clip: text; /* For Safari and Chrome */
+	-webkit-text-fill-color: transparent;
+}
+
+.project-link::after {
+	content: ""; /* Creates the static underline */
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%; /* Full width by default */
+	height: 3px; /* Thickness of the underline */
+	background: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0); /* Matches the header gradient */
+}
+
 
 </style>
 
@@ -55,9 +81,9 @@
 			<div id="main">
 				<!-- Skyrim -->
 				<section id="skyrim" class="main special">
-					<header class="major">
-						<a href="https://creations.bethesda.net/en/skyrim/details/cf3bd19c-62cf-4c21-a4cb-669694cd3d34/RecyclR__XB1_"><h2>Skyrim Game Engine Optimization</h2></a>
-					</header>
+					<h2>
+						<a href="https://creations.bethesda.net/en/skyrim/details/cf3bd19c-62cf-4c21-a4cb-669694cd3d34/RecyclR__XB1_" class="project-link"><h2>Skyrim Game Engine Optimization</h2></a>
+					</h2>
 					<div class="content">
 						<p>
 							I Developed performance improvements to The Elder Scrolls V: Skyrim's game engine with modifications in C++, 
@@ -83,15 +109,15 @@ iDaysToRespawnVendor = 1; // Was 2, paired with other cell reset issues, this ma
 			
 				<!-- Data Structures -->
 				<section id="datastructure" class="main special">
-					<header class="major">
-						<a href="https://github.com/Kubia-Beta/CS-300/blob/main/CS300%20Project%20Two/CS300%20Project%20Two.cpp"><h2>Custom Data Structure Analysis</h2></a>
-					</header>
+					<h2>
+						<a href="https://github.com/Kubia-Beta/CS-300/blob/main/CS300%20Project%20Two/CS300%20Project%20Two.cpp" class="project-link"><h2>Custom Data Structure Analysis</h2></a>
+					</h2>
 					<div class="content">
 						<p>
 							In this project, I explored the practical application of theoretical data structures by implementing and comparing a custom Vector, 
 							Hash Table, and Binary Search Tree. Designed to analyze algorithmic efficiency, the program evaluated time and space complexity through 
-							Big O, Big Theta, and Big Omega notations. I utilized C++ to construct and integrate these structures into a single-file application, 
-							adhering to specific constraints while ensuring code modularity and maintainability. 
+							Big O, Big Theta, and Big Omega notations to ensure the code code be analyzed statically.
+							I utilized C++ to construct and integrate these structures into an application, adhering to specific constraints while ensuring code modularity and maintainability. 
 							Additionally, I developed robust error handling for input verification, including a CSV parser that identifies incompatible data with 
 							precise error feedback. This experience deepened my understanding of how mathematical abstractions translate into programming realities, 
 							particularly the trade-offs and practicalities involved in designing and implementing data structures. 
@@ -134,9 +160,9 @@ void BST::InsertItem(Node* node, Course aCourse) {
 			
 				<!-- Hold to Craft -->
 				<section id="htc" class="main special">
-					<header class="major">
-						<a href="https://github.com/Kubia-Beta/Hold_to_Craft"><h2>Hold to Craft</h2></a>
-					</header>
+					<h2>
+						<a href="https://github.com/Kubia-Beta/Hold_to_Craft" class="project-link"><h2>Hold to Craft</h2></a>
+					</h2>
 					<div class="content">
 						<p>
 							I Designed and implemented a new crafting automation solution for No Man's Sky using C++ and AutoHotKey programming languages, which improved a repetitive in-game process.
@@ -166,9 +192,9 @@ std::string ReplaceWords(const std::string& input) { //scans the input line and 
 			
 			<!-- Task Management System -->
 				<section id="tms" class="main special">
-					<header class="major">
-						<a href="https://github.com/Kubia-Beta/CS-320"><h2>Task Management System </h2></a>
-					</header>
+					<h2>
+						<a href="https://github.com/Kubia-Beta/CS-320" class="project-link"><h2>Task Management System </h2></a>
+					</h2>
 					<div class="content">
 						<p>
 							Here I architected a modular Java-based appointment and task management system featuring distinct controller classes for contacts, 
@@ -255,9 +281,9 @@ MIIDgDCCAumgAwIBAgIB... [Redacted]
 
 				<!-- Spring Boot REST Services -->
 				<section id="rest-api" class="main special">
-					<header class="major">
-						<a href="https://github.com/Kubia-Beta/Software-Security-CS305/tree/main"><h2>Spring Boot REST Services</h2></a>
-					</header>
+					<h2>
+						<a href="https://github.com/Kubia-Beta/Software-Security-CS305/tree/main" class="project-link"><h2>Spring Boot REST Services</h2></a>
+					</h2>
 					<div class="content">
 						<p>
 							I developed a secure server application for the mock client Artemis Financial, a consulting firm specializing in financial planning. 
@@ -301,9 +327,9 @@ private String generateHash(String data) throws NoSuchAlgorithmException, Unsupp
 
 				<!-- C++ Multithreading Application -->
 				<section id="cpp-multithreading" class="main special">
-					<header class="major">
-						<a href="https://github.com/Kubia-Beta/Sandboxing/blob/main/PeakFinding.cpp"><h2>C++ Multithreaded Peak-Finding</h2></a>
-					</header>
+					<h2>
+						<a href="https://github.com/Kubia-Beta/Sandboxing/blob/main/PeakFinding.cpp" class="project-link"><h2>C++ Multithreaded Peak-Finding</h2></a>
+					</h2>
 					<div class="content">
 						<p>
 							This personal project, completed as a one-day exercise, focused on leveraging multithreading in C++ to efficiently detect peaks in large datasets. 
