@@ -78,7 +78,6 @@
 					<li><a href="#tms">Task Management System</a></li>
 					<li><a href="#router-analysis">Router Security Analysis</a></li>
 					<li><a href="#rest-api">Spring Boot REST Services</a></li>
-					<li><a href="#cpp-multithreading">C++ Multithreaded Peakfinding</a></li>
 				</ul>
 			</nav>
 
@@ -329,72 +328,6 @@ private String generateHash(String data) throws NoSuchAlgorithmException, Unsupp
 						</code></pre>
 					</div>
 				</section>
-
-				<!-- C++ Multithreading Application -->
-				<section id="cpp-multithreading" class="main special">
-					<h2>
-						<a href="https://github.com/Kubia-Beta/Sandboxing/blob/main/PeakFinding.cpp" class="project-link"><h2>C++ Multithreaded Peak-Finding</h2></a>
-					</h2>
-					<div class="content">
-						<p>
-							This personal project, completed as a one-day exercise, focused on leveraging multithreading in C++ to efficiently detect peaks in large datasets. 
-							The program generates vectors of varying sizes, including datasets as large as 2^28 elements, 
-							and compares the performance of straightforward single-threaded algorithms against a multithreaded implementation. 
-							By dividing the data into segments and utilizing threads to process each segment concurrently, 
-							the multithreaded approach significantly improves execution time.
-						</p>
-							<h3>Key highlights include:</h3>
-						<ul>
-							<li>Efficient Vector Generation: Optimized dataset creation with direct array assignment.</li>
-							<li>Multithreading Framework: Used std::thread and std::promise for parallel processing.</li>
-							<li>Algorithm Efficiency: Compared single-threaded and multithreaded approaches.</li>
-						</ul>
-						<p>
-						This project not only reinforced proficiency in C++ multithreading but also highlighted the practical advantages of parallel 
-						processing for computationally intensive tasks. 
-						It served as a valuable opportunity to stay motivated and refine programming skills during a professional transition.
-						</p>
-						<h3>Multithreaded snippet</h3>
-									<pre><code class="lang-cpp">
-double OneDimVector::PeakFindCountMultithreaded(vector<int>& vectorToTraverse, int numThreads) {
-	auto startTime = chrono::high_resolution_clock::now();
-
-	int vectorSize = vectorToTraverse.size();
-	int segmentSize = vectorSize / numThreads;
-
-	// Store futures for peak counts from each thread
-	vector<future<int>> futures;
-
-	// Launch threads to search each segment
-	for (int i = 0; i < numThreads; ++i) {
-		int start = i * segmentSize;
-		int end = (i == numThreads - 1) ? vectorSize : start + segmentSize + 1; // Check overlap
-
-		promise<int> peakCountPromise;
-		futures.push_back(peakCountPromise.get_future());
-
-		// Launch a thread to count peaks in the segment [start, end)
-		thread t(&OneDimVector::CountPeaksInSegment, this, ref(vectorToTraverse), start, end, move(peakCountPromise));
-		t.detach(); // Detach threads to allow parallel execution
-	}
-
-	// Accumulate the total number of peaks from all futures
-	int totalPeaks = 0;
-	for (auto& f : futures) {
-		totalPeaks += f.get(); // Add up the peak counts from all segments
-	}
-
-	auto endTime = chrono::high_resolution_clock::now();
-	chrono::duration<double> elapsed = endTime - startTime;
-
-	cout << "Total peaks found: " << totalPeaks << endl;
-
-	return elapsed.count(); // Return elapsed time in seconds
-}
-						</code></pre>
-					</div>
-				</section>
-
 			</div>
 
 
