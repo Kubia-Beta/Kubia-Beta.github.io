@@ -44,7 +44,7 @@
 								<p>Cross-site scripting is an extremely dangerous attack that has innumerable consequences. Here are some example XSS scripts used to detect vulnerability:</p>
 								<pre><code class="lang-html">
 <span class="token punctuation"><</span><span class="string">BODY ONLOAD=alert('XSS')></span>
-<span class="token punctuation"><</span>b> onmouseover=alert('Wufff!')>click me!</b>
+<span class="token punctuation"><</span>b> onmouseover=alert('Wufff!')>click me!<span class="token punctuation"><</span>/b>
 <span class="token punctuation"><</span>img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
 <span class="token punctuation"><</span>IMG SRC=j&#X41vascript:alert('test2')>
 <span class="token punctuation"><</span>META HTTP-EQUIV="refresh"
