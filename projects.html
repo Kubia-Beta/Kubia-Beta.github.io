@@ -111,6 +111,72 @@ iDaysToRespawnVendor = 1; // Was 2, paired with other cell reset issues, this ma
 					</div>
 				</section>
 			
+			
+			
+			
+			
+			<!-- Equality Compass -->
+				<section id="equalitycompass" class="main special">
+					<h2>
+						<a href="https://github.com/Kubia-Beta/Equality-Compass" class="project-link"><h2>Equality Compass, Employing the LGBTQ+ Community</h2></a>
+					</h2>
+					<div class="content">
+						<p>
+							Equality Compass allows for LGBTQ+ people to navigate the job market and make strategic choices 
+							about which jobs to apply for given their unique circumstances. It is presented in an easy-to-read UI 
+							that highlights the state the job is in, and using the Movement Advancement Project’s scores for 
+							overall policy tally or gender identity, colors that highlight based on that data. This gives the 
+							potential applicant a quick judgment about the safety outside of the work environment.
+						</p>
+						<p>
+!-- IMG OF LINKEDIN COLORED --> 
+						</p>
+						<p>
+							For LGBTQ+ job seekers, the job market can be extra tough. Even with bias eliminated in any hiring process, 
+							outside culture still effects that person’s everyday life as they may or may not have a large number of rights
+							within certain states, such as non-discrimination laws, inclusive sick leave, exclusions in law denying 
+							identity, the ability to use bathrooms, the right to exist in public, and unfortunately much, much more. 
+							It’s a lot to keep track of while applying for work, and that’s where my idea came in.
+						</p>
+						<p>
+!-- CROPPED IMG OF MAP STATE DATA TABLE 
+						</p>
+						<p>
+							Given that this was my first JavaScript project, I made sure to start immediately consulting documentation after a quick AI proof-of-concept. Mozilla has excellent documentation on every topic this project covers, including the usage of alternatives to innerHTML for searching and manipulating the displays of a webpage, as innerHTML is vulnerable to a large number of cyber threats. From there, in one month of development in my spare time, the application became a proper tool for a single tab job search.
+						</p>
+						<p>
+							One month later, it had a state-driven user interface, asynchronous storage and communication, capability to run
+							on hundreds of tabs at once without a performance impact even when settings are changed in real time, cross-platform 
+							compatibility thanks to Polyfill integration, and support for multiple job search websites. Overall, the application 
+							extension helped LGBTQ+ people find employment in safer areas of the country based on their unique circumstances 
+							and spend significantly less time on job applications that they would ultimately reject an offer for.
+						</p>
+						<h3>Dynamic Object Model (DOM) MutationObserver Snippet</h3>
+									<pre><code class="lang-js">
+//============================================================================
+// Observer Logic
+//============================================================================
+
+/**
+ * Locally listen for messages from the background script to reprocess locations when the user changes extension settings.
+ * @param msg, the .sendMessage from the background script
+ */
+browser.runtime.onMessage.addListener((msg) => {
+	if (msg.type === "modeChanged") {
+		console.log("[Equality Compass] Display setting changed — reprocessing all visible spans");
+		// Unmark all previously processed spans
+		document.querySelectorAll('[data-processed="true"]').forEach(el => {
+			el.removeAttribute("data-processed");
+		});
+		colorHelper(); // Recolor all current locations with new mode
+	}
+});
+						</code></pre>
+					</div>
+				</section>
+			
+			
+			
 				<!-- Data Structures -->
 				<section id="datastructure" class="main special">
 					<h2>
@@ -273,11 +339,21 @@ dDc704a7oehOAaRLEw9M... [Redacted]
 MIIDgDCCAumgAwIBAgIB... [Redacted]
 -----END CERTIFICATE-----
 						</code></pre>
+						<p>
+							As innocent as that snippet may seem, this hardcoded key and certificate and key makes it possible to impersonate the router, 
+							decrypt any of your traffic, and general unauthorized access. Worse, this router can take a packet sent to it by an attacker 
+							who is now successfully impersonating a connected device, and use it to change the address that updates are fetched from 
+							as well as issue an order to update and shut down the device. An issue of this scale usually warrants physically pulling the 
+							ethernet cable from the device to disconnect it from the network and internet. Worse, 3DES has been out of use since AES 
+							in 2001 per NIST, meaning this is multiple large problems bundled into one.
+						</p>
 						<ul class="alt">
+							<li>From this snippet alone:</li>
 							<li><a href="https://cwe.mitre.org/data/definitions/798.html">CWE-798</a>: Use of Hard-coded Credentials.</li>
 							<li><a href="https://cwe.mitre.org/data/definitions/321.html">CWE-321</a>: Use of Hard-coded Cryptographic Key.</li>
 							<li><a href="https://cwe.mitre.org/data/definitions/298.html">CWE-298</a>: Improper Validation of Certificate Expiration.</li>
 							<li><a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522</a>: Insufficiently Protected Credentials.</li>
+							<li><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a>: Use of a Broken or Risky Cryptographic Algorithm.</li>
 						</ul>
 					</div>
 				</section>
