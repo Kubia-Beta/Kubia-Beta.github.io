@@ -72,18 +72,88 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="https://kubia-beta.github.io/"><b>Home</b></a></li>
+					<li><a href="#equalitycompass">Equality Compass</a></li>
 					<li><a href="#skyrim">Skyrim Game Engine Optimization</a></li>
+					<li><a href="#router-analysis">Router Security Analysis</a></li>
 					<li><a href="#datastructure">Custom Data Structure Analysis</a></li>
 					<li><a href="#htc">Hold to Craft</a></li>
 					<li><a href="#tms">Task Management System</a></li>
-					<li><a href="#router-analysis">Router Security Analysis</a></li>
 					<li><a href="#rest-api">Spring Boot REST Services</a></li>
 				</ul>
 			</nav>
 
 			<!-- Main -->
 			<div id="main">
-				<!-- Skyrim -->
+			<!-- Equality Compass -->
+				<section id="equalitycompass" class="main special">
+					<h2>
+						<a href="https://github.com/Kubia-Beta/Equality-Compass" class="project-link"><h2>Equality Compass, Employing the LGBTQ+ Community</h2></a>
+					</h2>
+					<div class="content">
+						<p>
+							Equality Compass allows for LGBTQ+ people to navigate the job market and make strategic choices 
+							about which jobs to apply for given their unique circumstances. It is presented in an easy-to-read UI 
+							that highlights the state the job is in, and using the Movement Advancement Project’s scores for 
+							overall policy tally or gender identity, colors that highlight based on that data. This gives the 
+							potential applicant a quick judgment about the safety outside of the work environment.
+						</p>
+						<span class="image"><img src="images/ec_demo.png" alt="" style="width: 441px; height: 225px;"/></span>
+						<p>
+							For LGBTQ+ job seekers, the job market can be extra tough. Even with bias eliminated in any hiring process, 
+							outside culture still effects that person’s everyday life as they may or may not have a large number of rights
+							within certain states, such as non-discrimination laws, inclusive sick leave, exclusions in law denying 
+							identity, the ability to use bathrooms, the right to exist in public, and unfortunately much, much more. 
+							It’s a lot to keep track of while applying for work, and that’s where my idea came in.
+						</p>
+						<span class="image"><img src="images/state_table_demo.png" alt="" style="width: 706px; height: 240px;"/></span>
+						<p>
+							Given that this was my first JavaScript project, I made sure to start immediately consulting documentation after a quick AI proof-of-concept. Mozilla has excellent documentation on every topic this project covers, including the usage of alternatives to innerHTML for searching and manipulating the displays of a webpage, as innerHTML is vulnerable to a large number of cyber threats. From there, in one month of development in my spare time, the application became a proper tool for a single tab job search.
+						</p>
+						<span class="image"><img src="images/ec_menu.png" alt="" style="width: 422px; height: 422px;"/></span>
+						<p>
+							One month later, it was a lightweight multi-tab application with a state-driven user interface, 
+							ETL pipeline for M.A.P. data changes, asynchronous storage and communication, capability to run on hundreds of tabs at once 
+							without a performance impact, cross-platform compatibility thanks to Polyfill integration, and support for multiple 
+							job search websites. Overall, the application extension helped LGBTQ+ people find employment in safer areas of the 
+							country based on their unique circumstances.
+						</p>
+						<h3>Dynamic Object Model (DOM) Span Processor</h3>
+									<pre><code class="lang-js">
+/**
+ * Processes a span into a matching state and surrounding text using a regular expression.
+ * @param originalText, the text object we are trying to process
+ * @return { precedingText , stateCandidate, trailingText }, an object containing the processed location parts.
+ */
+function processLocation(originalText, mode){
+	const states = window.stateScores[mode];
+	let stateLocation = 0;
+	let stateCandidate = "";
+	
+	// Sort the keys from stateScores.js to match abbreviations first
+	const sortedKeys = Object.keys(states).sort((a, b) => b.length - a.length);
+	
+	for (const key of sortedKeys) {
+		const regex = new RegExp(`\\b${key}\\b`); // match whole word
+		const match = originalText.match(regex);
+		if (match) {
+			stateCandidate = match[0];
+			stateLocation = match.index;
+		}
+	}
+	
+	// construct the surrounding text
+	let reconstructor = originalText;
+	const precedingText = reconstructor.slice(0, stateLocation);
+	const trailingText = reconstructor.slice(stateLocation + stateCandidate.length);
+	
+	return { precedingText , stateCandidate, trailingText }
+}
+						</code></pre>
+					</div>
+				</section>
+			
+			
+			<!-- Skyrim -->
 				<section id="skyrim" class="main special">
 					<h2>
 						<a href="https://creations.bethesda.net/en/skyrim/details/cf3bd19c-62cf-4c21-a4cb-669694cd3d34/RecyclR__XB1_" class="project-link"><h2>Skyrim Game Engine Optimization</h2></a>
@@ -110,71 +180,54 @@ iDaysToRespawnVendor = 1; // Was 2, paired with other cell reset issues, this ma
 						</code></pre>
 					</div>
 				</section>
+				
 			
-			
-			
-			
-			
-			<!-- Equality Compass -->
-				<section id="equalitycompass" class="main special">
-					<h2>
-						<a href="https://github.com/Kubia-Beta/Equality-Compass" class="project-link"><h2>Equality Compass, Employing the LGBTQ+ Community</h2></a>
-					</h2>
+			<!-- Router Security Analysis -->
+				<section id="router-analysis" class="main special">
+					<header class="major">
+						<h2>Router Security Analysis</h2>
+					</header>
 					<div class="content">
 						<p>
-							Equality Compass allows for LGBTQ+ people to navigate the job market and make strategic choices 
-							about which jobs to apply for given their unique circumstances. It is presented in an easy-to-read UI 
-							that highlights the state the job is in, and using the Movement Advancement Project’s scores for 
-							overall policy tally or gender identity, colors that highlight based on that data. This gives the 
-							potential applicant a quick judgment about the safety outside of the work environment.
+							I analyzed vulnerabilities in router firmware manufactured by Micronet-Union Technologies, Inc.
+							The identified weaknesses were mapped to the Common Weakness Enumeration (CWE) database, and I provided low-cost solutions to the manufacturer. 
+							This project required expertise in HTML, JavaScript, C, C++, and ASP, along with networking and security standards.
 						</p>
-						<p>
-!-- IMG OF LINKEDIN COLORED --> 
-						</p>
-						<p>
-							For LGBTQ+ job seekers, the job market can be extra tough. Even with bias eliminated in any hiring process, 
-							outside culture still effects that person’s everyday life as they may or may not have a large number of rights
-							within certain states, such as non-discrimination laws, inclusive sick leave, exclusions in law denying 
-							identity, the ability to use bathrooms, the right to exist in public, and unfortunately much, much more. 
-							It’s a lot to keep track of while applying for work, and that’s where my idea came in.
-						</p>
-						<p>
-!-- CROPPED IMG OF MAP STATE DATA TABLE 
-						</p>
-						<p>
-							Given that this was my first JavaScript project, I made sure to start immediately consulting documentation after a quick AI proof-of-concept. Mozilla has excellent documentation on every topic this project covers, including the usage of alternatives to innerHTML for searching and manipulating the displays of a webpage, as innerHTML is vulnerable to a large number of cyber threats. From there, in one month of development in my spare time, the application became a proper tool for a single tab job search.
-						</p>
-						<p>
-							One month later, it had a state-driven user interface, asynchronous storage and communication, capability to run
-							on hundreds of tabs at once without a performance impact even when settings are changed in real time, cross-platform 
-							compatibility thanks to Polyfill integration, and support for multiple job search websites. Overall, the application 
-							extension helped LGBTQ+ people find employment in safer areas of the country based on their unique circumstances 
-							and spend significantly less time on job applications that they would ultimately reject an offer for.
-						</p>
-						<h3>Dynamic Object Model (DOM) MutationObserver Snippet</h3>
-									<pre><code class="lang-js">
-//============================================================================
-// Observer Logic
-//============================================================================
+						
+						<!-- Code Snippets -->
+						<h3>Security Flaw Snippet</h3>
+						<pre><code>
+-----BEGIN CERTIFICATE-----
+MIIDjDCCAvWgAwIBAgIB... [Redacted]
+-----END CERTIFICATE-----
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: DES-EDE3-CBC,570ECFA93805BE9F
 
-/**
- * Locally listen for messages from the background script to reprocess locations when the user changes extension settings.
- * @param msg, the .sendMessage from the background script
- */
-browser.runtime.onMessage.addListener((msg) => {
-	if (msg.type === "modeChanged") {
-		console.log("[Equality Compass] Display setting changed — reprocessing all visible spans");
-		// Unmark all previously processed spans
-		document.querySelectorAll('[data-processed="true"]').forEach(el => {
-			el.removeAttribute("data-processed");
-		});
-		colorHelper(); // Recolor all current locations with new mode
-	}
-});
+dDc704a7oehOAaRLEw9M... [Redacted]
+-----END RSA PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIIDgDCCAumgAwIBAgIB... [Redacted]
+-----END CERTIFICATE-----
 						</code></pre>
+						<p>
+							As innocent as that snippet may seem, this hardcoded key and certificate and key makes it possible to impersonate the router, 
+							decrypt any of your traffic, and general unauthorized access. Worse, this router can take a packet sent to it by an attacker 
+							who is now successfully impersonating a connected device, and use it to change the address that updates are fetched from 
+							as well as issue an order to update and shut down the device. An issue of this scale usually warrants physically pulling the 
+							ethernet cable from the device to disconnect it from the network and internet. Worse, 3DES has been out of use since AES 
+							in 2001 per NIST, meaning this is multiple large problems bundled into one.
+						</p>
+						<ul class="alt">
+							<li>From this snippet alone:</li>
+							<li><a href="https://cwe.mitre.org/data/definitions/798.html">CWE-798</a>: Use of Hard-coded Credentials.</li>
+							<li><a href="https://cwe.mitre.org/data/definitions/321.html">CWE-321</a>: Use of Hard-coded Cryptographic Key.</li>
+							<li><a href="https://cwe.mitre.org/data/definitions/298.html">CWE-298</a>: Improper Validation of Certificate Expiration.</li>
+							<li><a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522</a>: Insufficiently Protected Credentials.</li>
+							<li><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a>: Use of a Broken or Risky Cryptographic Algorithm.</li>
+						</ul>
 					</div>
 				</section>
-			
 			
 			
 				<!-- Data Structures -->
@@ -228,6 +281,7 @@ void BST::InsertItem(Node* node, Course aCourse) {
 					</div>
 				</section>
 			
+			
 				<!-- Hold to Craft -->
 				<section id="htc" class="main special">
 					<h2>
@@ -259,6 +313,7 @@ std::string ReplaceWords(const std::string& input) { //scans the input line and 
 						</code></pre>
 					</div>
 				</section>
+			
 			
 			<!-- Task Management System -->
 				<section id="tms" class="main special">
@@ -300,61 +355,6 @@ class ContactServiceTest {
 					testLast + "OVERLOAD", testPhone + "OVERLOAD", testAddress + "OVERLOAD");
 		});}
 						</code></pre>
-					</div>
-				</section>
-
-				<!-- Router Security Analysis -->
-				<section id="router-analysis" class="main special">
-					<header class="major">
-						<h2>Router Security Analysis</h2>
-					</header>
-					<div class="content">
-						<p>
-							I analyzed vulnerabilities in router firmware manufactured by Micronet-Union Technologies, Inc.
-							The identified weaknesses were mapped to the Common Weakness Enumeration (CWE) database, and I provided low-cost solutions to the manufacturer. 
-							This project required expertise in HTML, JavaScript, C, C++, and ASP, along with networking and security standards.
-						</p>
-						<!--
-						<h4><strong>Highlights:</strong></h>
-							<ul>
-								<li>Discovered firmware exploits affecting network security.</li>
-								<li>Collaborated with Micronet-Union Technologies to enhance router firmware security.</li>
-								<li>Provided detailed test scripts and remediation paths.</li>
-							</ul>
-						<span class="image"><img src="assets/images/router-analysis.jpg" alt="Router Security Analysis" /></span> --!>
-
-						<!-- Code Snippets -->
-						<h3>Security Flaw Snippet</h3>
-						<pre><code>
------BEGIN CERTIFICATE-----
-MIIDjDCCAvWgAwIBAgIB... [Redacted]
------END CERTIFICATE-----
------BEGIN RSA PRIVATE KEY-----
-Proc-Type: 4,ENCRYPTED
-DEK-Info: DES-EDE3-CBC,570ECFA93805BE9F
-
-dDc704a7oehOAaRLEw9M... [Redacted]
------END RSA PRIVATE KEY-----
------BEGIN CERTIFICATE-----
-MIIDgDCCAumgAwIBAgIB... [Redacted]
------END CERTIFICATE-----
-						</code></pre>
-						<p>
-							As innocent as that snippet may seem, this hardcoded key and certificate and key makes it possible to impersonate the router, 
-							decrypt any of your traffic, and general unauthorized access. Worse, this router can take a packet sent to it by an attacker 
-							who is now successfully impersonating a connected device, and use it to change the address that updates are fetched from 
-							as well as issue an order to update and shut down the device. An issue of this scale usually warrants physically pulling the 
-							ethernet cable from the device to disconnect it from the network and internet. Worse, 3DES has been out of use since AES 
-							in 2001 per NIST, meaning this is multiple large problems bundled into one.
-						</p>
-						<ul class="alt">
-							<li>From this snippet alone:</li>
-							<li><a href="https://cwe.mitre.org/data/definitions/798.html">CWE-798</a>: Use of Hard-coded Credentials.</li>
-							<li><a href="https://cwe.mitre.org/data/definitions/321.html">CWE-321</a>: Use of Hard-coded Cryptographic Key.</li>
-							<li><a href="https://cwe.mitre.org/data/definitions/298.html">CWE-298</a>: Improper Validation of Certificate Expiration.</li>
-							<li><a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522</a>: Insufficiently Protected Credentials.</li>
-							<li><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a>: Use of a Broken or Risky Cryptographic Algorithm.</li>
-						</ul>
 					</div>
 				</section>
 
