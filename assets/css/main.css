@@ -331,7 +331,7 @@ input, select, textarea {
 		border-bottom-color: rgba(255, 255, 255, 0.35);
 	}
 	
-	.emoji { opacity: 0.15; font-family: "Courier New", monospace; font-size: 0.4em}
+	.emoji { opacity: 0.15; font-family: "Courier New", monospace; font-size: 2vh}
 
 /* Row */
 
